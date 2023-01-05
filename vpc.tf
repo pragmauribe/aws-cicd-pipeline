@@ -4,11 +4,9 @@ resource "aws_vpc" "VPC_Pragma" {
   cidr_block           = var.CIDR_VPC[0]
   enable_dns_hostnames = true
 
-  tags = merge(
-    var.info_tags, {
+  tags = {
       Name = "VPC_Pragma"
     }
-  )
 }
 
 # Resource: aws_internet_gateway
@@ -16,9 +14,7 @@ resource "aws_vpc" "VPC_Pragma" {
 resource "aws_internet_gateway" "gw_Pragma" {
   vpc_id = aws_vpc.VPC_Pragma.id
 
-  tags = merge(
-    var.info_tags, {
+  tags = {
       Name = "Gateway_Pragma"
     }
-  )
 }
