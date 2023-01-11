@@ -13,7 +13,7 @@ resource "aws_secretsmanager_secret_version" "password" {
 # Retrieve metadata information about a Secrets Manager secret
 data "aws_secretsmanager_secret" "secret" {
   depends_on = [aws_secretsmanager_secret.secret]
-  name       = "dockerhub-credentials"
+  name       = "docker"
 }
 
 # Retrieve information about a Secrets Manager secret version, including its secret value
