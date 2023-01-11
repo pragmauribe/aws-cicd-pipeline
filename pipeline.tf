@@ -12,8 +12,10 @@ resource "aws_codebuild_project" "tf-plan" {
     image                       = "hashicorp/terraform:1.3.7"
     type                        = "LINUX_CONTAINER"
     image_pull_credentials_type = "SERVICE_ROLE"
-    registry_credential{
-        credential = var.dockerhub_credentials
+    registry_credential {
+        #credential = var.dockerhub_credentials
+        credential = aws_secretsmanager_secret_version.password.arn
+        #credential = aws_secretsmanager_secret_version.arn
         credential_provider = "SECRETS_MANAGER"
     }
  }
